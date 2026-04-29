@@ -93,6 +93,13 @@ class AnnouncementsView(tk.Frame):
             return
         try:
             cursor = conn.cursor()
+            
+            # Check if course exists
+            cursor.execute("SELECT id FROM courses WHERE id = %s", (course_id,))
+            if not cursor.fetchone():
+                messagebox.showerror("Error", f"Course with ID {course_id} does not exist.")
+                return
+
             date = datetime.date.today().isoformat()
             cursor.execute("INSERT INTO announcements (course_id, message, date) VALUES (%s, %s, %s)", (course_id, message, date))
             conn.commit()

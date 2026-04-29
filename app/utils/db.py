@@ -19,7 +19,7 @@ class Database:
                 self.connection = mysql.connector.connect(
                     host="localhost",
                     user="root",
-                    password="your_password",
+                    password="",
                     database="course_db"
                 )
                 logger.info("Successfully connected to MySQL database.")

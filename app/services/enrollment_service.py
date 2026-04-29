@@ -11,6 +11,16 @@ class EnrollmentService:
             
         try:
             cursor = conn.cursor()
+            # Check if student exists
+            cursor.execute("SELECT id FROM students WHERE id = %s", (student_id,))
+            if not cursor.fetchone():
+                raise ValueError(f"Student with ID {student_id} does not exist.")
+                
+            # Check if course exists
+            cursor.execute("SELECT id FROM courses WHERE id = %s", (course_id,))
+            if not cursor.fetchone():
+                raise ValueError(f"Course with ID {course_id} does not exist.")
+
             # Check for duplicate
             cursor.execute("SELECT id FROM enrollments WHERE student_id = %s AND course_id = %s", (student_id, course_id))
             if cursor.fetchone():

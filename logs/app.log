@@ -1,0 +1,28 @@
+2026-04-29 09:53:01,485 - db - INFO - Successfully connected to MySQL database.
+2026-04-29 09:53:01,486 - auth_service - WARNING - Failed login attempt for username: Abubakar
+2026-04-29 09:53:29,001 - auth_service - WARNING - Failed login attempt for username: admin
+2026-04-29 09:53:41,316 - auth_service - INFO - User admin logged in successfully as Admin.
+2026-04-29 09:54:11,271 - course_service - ERROR - Error adding course: 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`course_db`.`courses`, CONSTRAINT `courses_ibfk_1` FOREIGN KEY (`teacher_id`) REFERENCES `users` (`id`) ON DELETE SET NULL)
+2026-04-29 09:54:20,750 - course_service - INFO - Course 'Pf' added successfully.
+2026-04-29 09:55:03,667 - course_service - ERROR - Error updating course: 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`course_db`.`courses`, CONSTRAINT `courses_ibfk_1` FOREIGN KEY (`teacher_id`) REFERENCES `users` (`id`) ON DELETE SET NULL)
+2026-04-29 09:55:57,180 - enrollment_service - ERROR - Error enrolling student: 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`course_db`.`enrollments`, CONSTRAINT `enrollments_ibfk_2` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE)
+2026-04-29 09:56:03,334 - enrollment_service - ERROR - Error enrolling student: 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`course_db`.`enrollments`, CONSTRAINT `enrollments_ibfk_2` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE)
+2026-04-29 09:56:12,765 - enrollment_service - ERROR - Error enrolling student: 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`course_db`.`enrollments`, CONSTRAINT `enrollments_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`) ON DELETE CASCADE)
+2026-04-29 09:56:34,773 - enrollment_service - ERROR - Error enrolling student: 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`course_db`.`enrollments`, CONSTRAINT `enrollments_ibfk_2` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE)
+2026-04-29 10:01:49,900 - db - INFO - Successfully connected to MySQL database.
+2026-04-29 10:01:49,902 - auth_service - INFO - User admin logged in successfully as Admin.
+2026-04-29 10:02:02,916 - course_service - INFO - Course 'PF' added successfully.
+2026-04-29 10:02:16,675 - course_service - INFO - Course 'wwww' added successfully.
+2026-04-29 10:02:37,173 - enrollment_service - ERROR - Error enrolling student: Course with ID 1 does not exist.
+2026-04-29 10:02:43,736 - enrollment_service - ERROR - Error enrolling student: Student with ID 2 does not exist.
+2026-04-29 10:03:24,893 - auth_service - INFO - User teacher1 logged in successfully as Teacher.
+2026-04-29 10:03:50,089 - assignment_service - ERROR - Error adding assignment: 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`course_db`.`assignments`, CONSTRAINT `assignments_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE)
+2026-04-29 10:04:04,323 - assignment_service - ERROR - Error adding assignment: 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`course_db`.`assignments`, CONSTRAINT `assignments_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE)
+2026-04-29 10:06:38,041 - db - INFO - Successfully connected to MySQL database.
+2026-04-29 10:06:38,042 - auth_service - INFO - User teacher1 logged in successfully as Teacher.
+2026-04-29 10:09:46,929 - db - INFO - Successfully connected to MySQL database.
+2026-04-29 10:09:46,930 - auth_service - INFO - User admin logged in successfully as Admin.
+2026-04-29 10:10:52,001 - auth_service - INFO - User admin logged in successfully as Admin.
+2026-04-29 10:11:06,722 - enrollment_service - ERROR - Error enrolling student: Course with ID 7 does not exist.
+2026-04-29 10:11:53,829 - auth_service - INFO - User student1 logged in successfully as Student.
+2026-04-29 10:12:00,342 - db - INFO - Successfully connected to MySQL database.

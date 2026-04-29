@@ -7,7 +7,7 @@ def create_database():
         connection = mysql.connector.connect(
             host="localhost",
             user="root",
-            password="your_password"
+            password=""
         )
         if connection.is_connected():
             cursor = connection.cursor()

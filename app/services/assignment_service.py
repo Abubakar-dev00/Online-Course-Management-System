@@ -14,6 +14,11 @@ class AssignmentService:
             
         try:
             cursor = conn.cursor()
+            # Check if course exists
+            cursor.execute("SELECT id FROM courses WHERE id = %s", (course_id,))
+            if not cursor.fetchone():
+                raise ValueError(f"Course with ID {course_id} does not exist.")
+                
             query = "INSERT INTO assignments (course_id, title, due_date) VALUES (%s, %s, %s)"
             cursor.execute(query, (course_id, title, due_date))
             conn.commit()

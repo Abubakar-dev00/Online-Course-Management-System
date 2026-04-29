@@ -14,6 +14,17 @@ class GradingService:
             
         try:
             cursor = conn.cursor()
+            
+            # Check if student exists
+            cursor.execute("SELECT id FROM students WHERE id = %s", (student_id,))
+            if not cursor.fetchone():
+                raise ValueError(f"Student with ID {student_id} does not exist.")
+                
+            # Check if assignment exists
+            cursor.execute("SELECT id FROM assignments WHERE id = %s", (assignment_id,))
+            if not cursor.fetchone():
+                raise ValueError(f"Assignment with ID {assignment_id} does not exist.")
+
             # Check if grade already exists
             cursor.execute("SELECT id FROM grades WHERE student_id = %s AND assignment_id = %s", (student_id, assignment_id))
             if cursor.fetchone():
@@ -64,6 +75,17 @@ class GradingService:
             
         try:
             cursor = conn.cursor()
+            
+            # Check if student exists
+            cursor.execute("SELECT id FROM students WHERE id = %s", (student_id,))
+            if not cursor.fetchone():
+                raise ValueError(f"Student with ID {student_id} does not exist.")
+                
+            # Check if course exists
+            cursor.execute("SELECT id FROM courses WHERE id = %s", (course_id,))
+            if not cursor.fetchone():
+                raise ValueError(f"Course with ID {course_id} does not exist.")
+
             cursor.execute("SELECT id FROM progress WHERE student_id = %s AND course_id = %s", (student_id, course_id))
             if cursor.fetchone():
                 query = "UPDATE progress SET status = %s WHERE student_id = %s AND course_id = %s"
