@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abubakar UML Diagram</title>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+    <style>
+        body { 
+            font-family: sans-serif; 
+            display: flex; 
+            flex-direction: column;
+            align-items: center; 
+            padding: 50px; 
+            background-color: #f4f4f9; 
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .mermaid { 
+            background: white; 
+            padding: 20px; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+        }
+    </style>
+</head>
+<body>
+    <h1>Abubakar Project - UML Class Diagram</h1>
+    <div class="mermaid">
+        classDiagram
+            class User {
+                +int id
+                +String username
+                +String role
+                +String password
+            }
+
+            class Student {
+                +int id
+                +String name
+                +String email
+                +int user_id
+            }
+
+            class Course {
+                +int id
+                +String title
+                +String description
+                +int teacher_id
+            }
+
+            class Assignment {
+                +int id
+                +int course_id
+                +String title
+                +Date due_date
+            }
+
+            class Enrollment {
+                +int id
+                +int student_id
+                +int course_id
+                +Date date
+            }
+
+            class Grade {
+                +int id
+                +int student_id
+                +int assignment_id
+                +String grade
+            }
+
+            class Progress {
+                +int id
+                +int student_id
+                +int course_id
+                +String status
+            }
+
+            class AuthService {
+                +login(username, password) User
+            }
+
+            class CourseService {
+                +add_course(title, description, teacher_id) int
+                +get_all_courses() List~Course~
+                +update_course(course_id, title, description, teacher_id) bool
+                +delete_course(course_id) bool
+            }
+
+            class AssignmentService {
+                +add_assignment(course_id, title, due_date) int
+                +get_assignments(course_id) List~Assignment~
+                +update_assignment(assignment_id, title, due_date) bool
+                +delete_assignment(assignment_id) bool
+            }
+
+            class EnrollmentService {
+                +enroll_student(student_id, course_id, date) int
+                +get_enrollments_for_course(course_id) List~Enrollment~
+                +get_enrollments_for_student(student_user_id) List~Enrollment~
+                +remove_enrollment(enrollment_id) bool
+            }
+
+            class GradingService {
+                +add_grade(student_id, assignment_id, grade) bool
+                +get_grades_for_assignment(assignment_id) List~Grade~
+                +update_progress(student_id, course_id, status) bool
+                +get_progress(student_id) List~Progress~
+            }
+
+            User <|-- Student : 1-to-1 / Is-A
+            User "1" -- "*" Course : teaches
+            Course "1" -- "*" Assignment : contains
+            Student "1" -- "*" Enrollment : has
+            Course "1" -- "*" Enrollment : has
+            Student "1" -- "*" Grade : earns
+            Assignment "1" -- "*" Grade : receives
+            Student "1" -- "*" Progress : tracks
+            Course "1" -- "*" Progress : tracked
+    </div>
+</body>
+</html>
