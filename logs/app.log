@@ -32,3 +32,9 @@
 2026-05-23 19:51:37,933 - enrollment_service - INFO - Student 1 enrolled in course 101.
 2026-05-23 19:51:37,940 - enrollment_service - ERROR - Error enrolling student: Student is already enrolled in this course.
 2026-05-23 19:51:37,950 - enrollment_service - INFO - Enrollment 5 removed.
+2026-05-23 23:36:12,075 - auth_service - INFO - User admin logged in successfully as Admin.
+2026-05-23 23:36:12,083 - auth_service - WARNING - Failed login attempt for username: admin
+2026-05-23 23:36:12,098 - course_service - INFO - Course 'Python 101' added successfully.
+2026-05-23 23:36:12,117 - enrollment_service - INFO - Student 1 enrolled in course 101.
+2026-05-23 23:36:12,128 - enrollment_service - ERROR - Error enrolling student: Student is already enrolled in this course.
+2026-05-23 23:36:12,152 - enrollment_service - INFO - Enrollment 5 removed.

@@ -1,11 +1,12 @@
 import mysql.connector
 from mysql.connector import Error
+import os
 
 def create_database():
     try:
         # Connect to MySQL server
         connection = mysql.connector.connect(
-            host="localhost",
+            host=os.environ.get("DB_HOST", "localhost"),
             user="root",
             password=""
         )

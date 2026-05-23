@@ -36,3 +36,14 @@ A comprehensive desktop application for managing online courses, built using Pyt
    python db_setup.py
    ```
    This will create the `course_db` database, its tables, and insert sample data.
+
+## Running via Docker
+You can run the entire application (MySQL + Tkinter GUI) inside Docker containers. Note that running a Tkinter GUI inside Docker on Windows requires an X11 server like [VcXsrv](https://sourceforge.net/projects/vcxsrv/) or Xming.
+
+1. Ensure Docker Desktop is running.
+2. Start an X11 server on your Windows host (e.g. VcXsrv) and allow access from public/private networks. Ensure "Disable access control" is checked.
+3. Build and start the containers using Docker Compose:
+   ```bash
+   docker-compose up --build
+   ```
+This will spin up the `course_mysql_db` container and the `course_tkinter_app` container. The application will automatically connect to the containerized database and initialize it on startup.

@@ -1,6 +1,7 @@
 import mysql.connector
 from mysql.connector import Error
 from app.utils.logger import get_logger
+import os
 
 logger = get_logger("db")
 
@@ -17,7 +18,7 @@ class Database:
         try:
             if self.connection is None or not self.connection.is_connected():
                 self.connection = mysql.connector.connect(
-                    host="localhost",
+                    host=os.environ.get("DB_HOST", "localhost"),
                     user="root",
                     password="",
                     database="course_db"
