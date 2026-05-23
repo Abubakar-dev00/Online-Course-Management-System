@@ -26,3 +26,9 @@
 2026-04-29 10:11:06,722 - enrollment_service - ERROR - Error enrolling student: Course with ID 7 does not exist.
 2026-04-29 10:11:53,829 - auth_service - INFO - User student1 logged in successfully as Student.
 2026-04-29 10:12:00,342 - db - INFO - Successfully connected to MySQL database.
+2026-05-23 19:51:37,896 - auth_service - INFO - User admin logged in successfully as Admin.
+2026-05-23 19:51:37,903 - auth_service - WARNING - Failed login attempt for username: admin
+2026-05-23 19:51:37,917 - course_service - INFO - Course 'Python 101' added successfully.
+2026-05-23 19:51:37,933 - enrollment_service - INFO - Student 1 enrolled in course 101.
+2026-05-23 19:51:37,940 - enrollment_service - ERROR - Error enrolling student: Student is already enrolled in this course.
+2026-05-23 19:51:37,950 - enrollment_service - INFO - Enrollment 5 removed.

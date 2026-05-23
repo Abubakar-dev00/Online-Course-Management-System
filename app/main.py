@@ -23,23 +23,35 @@ class App(tk.Tk):
 
         self.frames = {}
         
-        # We will initialize all frames and store them
-        for F in (LoginView, DashboardView, CourseView, EnrollmentView, 
-                  AssignmentView, ProgressView, GradingView, AnnouncementsView):
-            page_name = F.__name__
-            frame = F(parent=self.container, controller=self)
-            self.frames[page_name] = frame
-            frame.grid(row=0, column=0, sticky="nsew")
+        # Store view classes for lazy loading
+        self.view_classes = {
+            "LoginView": LoginView,
+            "DashboardView": DashboardView,
+            "CourseView": CourseView,
+            "EnrollmentView": EnrollmentView,
+            "AssignmentView": AssignmentView,
+            "ProgressView": ProgressView,
+            "GradingView": GradingView,
+            "AnnouncementsView": AnnouncementsView
+        }
 
         self.show_frame("LoginView")
 
     def show_frame(self, page_name):
-        # Lazy loading or simple raise
-        if page_name in self.frames:
-            frame = self.frames[page_name]
-            frame.tkraise()
-        else:
-            print(f"View {page_name} not implemented yet.")
+        # Lazy loading implementation
+        if page_name not in self.frames:
+            if page_name in self.view_classes:
+                # Instantiate the frame on demand
+                F = self.view_classes[page_name]
+                frame = F(parent=self.container, controller=self)
+                self.frames[page_name] = frame
+                frame.grid(row=0, column=0, sticky="nsew")
+            else:
+                print(f"View {page_name} not found.")
+                return
+        
+        frame = self.frames[page_name]
+        frame.tkraise()
 
     def add_frame(self, frame_class):
         page_name = frame_class.__name__
